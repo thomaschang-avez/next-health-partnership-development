@@ -1,0 +1,1017 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Health — Partnership Development | Avenue Z</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg: #faf9f6;
+      --white: #ffffff;
+      --black: #0a0a0a;
+      --dark: #1d1d1f;
+      --mid: #4a4a4f;
+      --muted: #86868b;
+      --border: rgba(0,0,0,0.07);
+      --border-mid: rgba(0,0,0,0.11);
+      --accent: #1a1a1a;
+      --accent-blue: #2563eb;
+      --accent-blue-dim: rgba(37,99,235,0.07);
+      --card: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-md: 0 2px 8px rgba(0,0,0,0.08), 0 8px 28px rgba(0,0,0,0.05);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,249,246,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--dark); }
+
+    /* COVER */
+    .cover {
+      background: var(--black);
+      color: #fff;
+      padding: 96px 64px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cover-inner { max-width: 780px; position: relative; z-index: 1; }
+
+    .cover-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 22px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .cover h1 {
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 18px;
+      animation: fadeUp 0.5s ease 0.07s both;
+    }
+
+    .cover-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 56px;
+      animation: fadeUp 0.5s ease 0.14s both;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 48px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      animation: fadeUp 0.5s ease 0.2s both;
+    }
+
+    .meta-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 5px;
+    }
+
+    .meta-value {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cover-tagline {
+      position: absolute;
+      bottom: 36px;
+      right: 64px;
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      z-index: 1;
+    }
+
+    /* MAIN */
+    .main { max-width: 880px; margin: 0 auto; padding: 0 48px 96px; }
+
+    section { padding-top: 80px; animation: fadeUp 0.5s ease both; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    .section-title {
+      font-size: 29px;
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.18;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+
+    /* HEARD GRID */
+    .heard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .heard-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .heard-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .heard-card.full { grid-column: 1 / -1; }
+
+    .heard-card h3 {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .heard-card ul { list-style: none; }
+
+    .heard-card ul li {
+      font-size: 13.5px;
+      color: var(--dark);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      line-height: 1.45;
+    }
+
+    .heard-card ul li:last-child { border-bottom: none; }
+
+    .heard-card ul li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      min-width: 4px;
+      border-radius: 50%;
+      background: var(--dark);
+      margin-top: 7px;
+    }
+
+    /* PERSPECTIVE */
+    .perspective-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--dark);
+      border-radius: 0 11px 11px 0;
+      padding: 30px 36px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--mid);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* SERVICES */
+    .services-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateX(3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.15);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .service-content h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .service-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: rgba(0,0,0,0.05);
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* CREATIVE */
+    .creative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .creative-embed-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .creative-embed-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .creative-embed-card iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      display: block;
+      background: #000;
+    }
+
+    .creative-embed-meta {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .creative-embed-meta h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .creative-embed-meta p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .creative-embed-meta a {
+      font-size: 11.5px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .creative-embed-meta a:hover { text-decoration: underline; }
+
+    /* HOW WE WORK */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .how-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .how-step {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .how-card p {
+      font-size: 13px;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* KPI */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .kpi-goal {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .kpi-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .kpi-arrow {
+      color: var(--dark);
+      font-size: 14px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .kpi-metric {
+      font-size: 13.5px;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    /* ACCESS */
+    .access-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+
+    .access-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .access-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,0.015);
+    }
+
+    .platform-initial {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .init-google { background: rgba(234,67,53,0.1); color: #ea4335; }
+    .init-meta   { background: rgba(24,119,242,0.1); color: #1877f2; }
+    .init-ga     { background: rgba(251,188,5,0.1); color: #b8860b; }
+
+    .platform-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    .platform-sub {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .access-steps {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .access-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .step-body { flex: 1; }
+
+    .step-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 3px;
+      display: block;
+    }
+
+    .step-detail {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .inline-email {
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 11.5px;
+      background: rgba(0,0,0,0.05);
+      color: var(--dark);
+      padding: 1px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .access-note {
+      margin: 16px 24px 24px;
+      background: rgba(0,0,0,0.025);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      margin-top: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+    }
+
+    .footer-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 3px;
+    }
+
+    .footer-tagline {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-right {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    section:nth-child(1) { animation-delay: 0.04s; }
+    section:nth-child(2) { animation-delay: 0.08s; }
+    section:nth-child(3) { animation-delay: 0.12s; }
+    section:nth-child(4) { animation-delay: 0.16s; }
+    section:nth-child(5) { animation-delay: 0.20s; }
+    section:nth-child(6) { animation-delay: 0.24s; }
+    section:nth-child(7) { animation-delay: 0.28s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .cover { padding: 64px 28px 56px; }
+      .cover h1 { font-size: 38px; }
+      .cover-meta { flex-wrap: wrap; gap: 20px; }
+      .cover-tagline { display: none; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .main { padding: 0 24px 60px; }
+      .heard-grid, .kpi-grid, .creative-grid, .how-grid { grid-template-columns: 1fr; }
+      .heard-card.full { grid-column: 1; }
+      .service-card { grid-template-columns: 28px 1fr; }
+      .service-tag { display: none; }
+    }
+
+    @media print {
+      body { background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      nav { display: none !important; }
+      section { break-inside: avoid; }
+      .heard-card, .service-card, .how-card, .kpi-card, .access-card { break-inside: avoid; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">A &nbsp; V &nbsp; E &nbsp; N &nbsp; U &nbsp; E &nbsp; Z</span>
+    <ul class="nav-links">
+      <li><a href="#heard">Discovery</a></li>
+      <li><a href="#perspective">Perspective</a></li>
+      <li><a href="#services">Engagement</a></li>
+      <li><a href="#creative">Creative</a></li>
+      <li><a href="#how">How We Work</a></li>
+      <li><a href="#success">Success</a></li>
+      <li><a href="#access">Audit Access</a></li>
+    </ul>
+  </nav>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="cover-eyebrow">Partnership Development</div>
+      <h1>Next Health</h1>
+      <p class="cover-sub">A strategic starting point, based on our conversation.</p>
+      <div class="cover-meta">
+        <div>
+          <div class="meta-label">Prepared by</div>
+          <div class="meta-value">Avenue Z</div>
+        </div>
+        <div>
+          <div class="meta-label">Date</div>
+          <div class="meta-value">April 2026</div>
+        </div>
+        <div>
+          <div class="meta-label">Category</div>
+          <div class="meta-value">Health Optimization &amp; Longevity</div>
+        </div>
+        </div>
+    </div>
+    <div class="cover-tagline">W E &nbsp; D R I V E &nbsp; I N F L U E N C E</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- SECTION 01: WHAT WE HEARD -->
+    <section id="heard">
+      <div class="section-label">Section 01</div>
+      <h2 class="section-title">What We Heard</h2>
+      <p class="section-intro">A reflection of our discovery conversation, in your words.</p>
+
+      <div class="heard-grid">
+        <div class="heard-card">
+          <h3>Your Goals</h3>
+          <ul>
+            <li>Reduce cost per lead (CPL) and improve full-funnel conversion to cost per acquisition (CPA)</li>
+            <li>Scale new member acquisition across existing and new markets</li>
+            <li>Build national brand recognition to match rapid franchise expansion</li>
+            <li>Drive qualified franchise inquiries as you scale toward 150+ locations</li>
+          </ul>
+        </div>
+
+        <div class="heard-card">
+          <h3>Challenges You're Navigating</h3>
+          <ul>
+            <li>Strong brand proof exists but hasn't translated into performance channel efficiency</li>
+            <li>Paid media hasn't fully converted celebrity and visual equity into efficient CPL and CPA</li>
+            <li>New market openings rely on local word-of-mouth without a structured launch playbook</li>
+            <li>Existing creative assets, advisor endorsements, UGC, and testimonials are underdeployed</li>
+          </ul>
+        </div>
+
+        <div class="heard-card">
+          <h3>Success Metrics You Referenced</h3>
+          <ul>
+            <li>CPL and CPA by market and channel</li>
+            <li>New member acquisition per location (monthly)</li>
+            <li>Franchise inquiry volume</li>
+            <li>AI search visibility for longevity and health optimization queries</li>
+            <li>ROAS across Meta and Google paid channels</li>
+          </ul>
+        </div>
+
+        <div class="heard-card">
+          <h3>Competitive Landscape</h3>
+          <ul>
+            <li>Function Health gaining share through DTC positioning and celebrity association</li>
+            <li>Fountain Life targeting high-net-worth with executive health programs</li>
+            <li>Lindora acquisition (Oct 2025) creates a larger story that hasn't been fully activated</li>
+          </ul>
+        </div>
+
+        <div class="heard-card full">
+          <h3>Urgency Signals</h3>
+          <ul>
+            <li>7+ new Next Health locations opening in 2026, each needing a structured media and creative launch</li>
+            <li>10+ Lindora locations in the pipeline, with integration into a cohesive paid media narrative still unfinished</li>
+            <li>Scott found Avenue Z through an AI search, confirming the AEO opportunity is real and timely</li>
+            <li>Competitors are building AI visibility and media presence now; the window to own the category narrative is open but narrowing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: PERSPECTIVE -->
+    <section id="perspective">
+      <div class="section-label">Section 02</div>
+      <h2 class="section-title">Our Perspective</h2>
+      <p class="section-intro">A brief strategic observation, informed by what you shared.</p>
+
+      <div class="perspective-block">
+        Next Health has a distribution problem, not a brand problem. The proof stack, medical authority, celebrity advisors, a "Ferrari" experience, transformation stories, is already there. What hasn't happened yet is translating that proof into the performance creative and channel infrastructure that drives efficient CPL and CPA at scale. Scott finding Avenue Z through an AI search is itself a signal: the longevity consumer is looking for answers in new places. The brands that appear in those answers, and convert that intent into booked appointments, will own the next phase of this category. Next Health has all the raw material. The opportunity is in deploying it.
+      </div>
+    </section>
+
+    <!-- SECTION 03: SERVICES -->
+    <section id="services">
+      <div class="section-label">Section 03</div>
+      <h2 class="section-title">Recommended Engagement</h2>
+      <p class="section-intro">Services connected to what you told us. Detail comes after alignment.</p>
+
+      <div class="services-list">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-content">
+            <h3>Paid Media, Meta and Google</h3>
+            <p>You have proof assets, testimonials, advisor endorsements, transformation content, that aren't being systematically tested in performance channels. We run a structured creative audit, build a testing framework, and scale what converts. The goal is to bring CPL and CPA to a level that makes each new location opening a repeatable playbook, not a one-off push.</p>
+          </div>
+          <div class="service-tag">Priority</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-content">
+            <h3>Creative Strategy and Production</h3>
+            <p>The creative layer is where Next Health's brand equity gets converted into performance. We audit your existing assets, identify hook frameworks that resonate with your target audiences, and produce a monthly creative pipeline built for testing. With 7+ location launches this year, creative needs to scale with you.</p>
+          </div>
+          <div class="service-tag">Priority</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-content">
+            <h3>AEO and AI Visibility</h3>
+            <p>Scott found Avenue Z through an AI search. Your prospective members are doing the same for longevity clinics. We audit where Next Health appears in AI-generated answers for high-intent queries and rebuild your AI footprint so the answer is consistently Next Health.</p>
+          </div>
+          <div class="service-tag">Growth</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: CREATIVE -->
+    <section id="creative">
+      <div class="section-label">Section 04</div>
+      <h2 class="section-title">Creative Examples</h2>
+      <p class="section-intro">A sample of relevant work from our health and wellness portfolio.</p>
+
+      <div class="creative-grid">
+        <div class="creative-embed-card">
+          <iframe src="https://drive.google.com/file/d/1J1cW7XA8vETwx_H6xj5pnSX7dP3dFoab/preview" allow="autoplay" allowfullscreen></iframe>
+          <div class="creative-embed-meta">
+            <h4>Health and Wellness Video Creative</h4>
+            <p>Performance video creative for the health and longevity vertical, built for paid social placement.</p>
+            <a href="https://drive.google.com/file/d/1J1cW7XA8vETwx_H6xj5pnSX7dP3dFoab/view" target="_blank">View Here</a>
+          </div>
+        </div>
+
+        <div class="creative-embed-card">
+          <iframe src="https://drive.google.com/file/d/1gXLzozPK2W_ysUzUy11cksm2qVA7Z5gc/preview" allow="autoplay" allowfullscreen></iframe>
+          <div class="creative-embed-meta">
+            <h4>UGC Performance Creative</h4>
+            <p>Hook-first UGC ad format tested with health-conscious consumer audiences across Meta and TikTok.</p>
+            <a href="https://drive.google.com/file/d/1gXLzozPK2W_ysUzUy11cksm2qVA7Z5gc/view" target="_blank">View Here</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: HOW WE WORK -->
+    <section id="how">
+      <div class="section-label">Section 05</div>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-intro">The operating model behind everything we do.</p>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-step">Strategy first</div>
+          <p>We start with a structured onboarding and strategy phase before any execution begins. You won't get activity for activity's sake.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-step">One point of accountability</div>
+          <p>A dedicated Portfolio Lead owns your engagement across all service lines. One strategic partner, not a rotating account team.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-step">Outcome-aligned</div>
+          <p>Our account executives are compensated on client outcomes, not hours billed. We are structurally aligned with your success.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-step">Integrated by design</div>
+          <p>Paid media, creative, and AEO are not siloed services. Each channel informs the others and we report holistically.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-step">Compounding results</div>
+          <p>We build for sustained momentum. Earned media feeds AI visibility, which feeds organic, which feeds inbound member acquisition.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-step">Transparent cadence</div>
+          <p>Bi-weekly reviews, KPI-aligned reporting, and a shared Slack channel. No surprises, no mystery metrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: SUCCESS -->
+    <section id="success">
+      <div class="section-label">Section 06</div>
+      <h2 class="section-title">What Success Looks Like</h2>
+      <p class="section-intro">Illustrative outcomes tied to what you told us matters. Directional, not commitments.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-goal">Goal: Efficient member acquisition</div>
+          <div class="kpi-row">
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-metric">CPL and CPA trending down quarter-over-quarter as creative testing identifies winning frameworks</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-goal">Goal: AI search visibility</div>
+          <div class="kpi-row">
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-metric">Next Health appearing in LLM responses for longevity and health optimization queries, tracked monthly</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-goal">Goal: Location launch playbook</div>
+          <div class="kpi-row">
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-metric">Structured paid media and creative activation for each new location, with measurable new member sign-ups in weeks 1-4</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-goal">Goal: Franchise inquiry growth</div>
+          <div class="kpi-row">
+            <span class="kpi-arrow">→</span>
+            <span class="kpi-metric">Increase in franchise page visits and form completions attributed to paid media and AEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: AUDIT ACCESS -->
+    <section id="access">
+      <div class="section-label">Section 07</div>
+      <h2 class="section-title">To Run Your Audit</h2>
+      <p class="section-intro">We'll need read-level access to three platforms before we can deliver meaningful findings. Here's exactly what that looks like for each, about 5 minutes per platform.</p>
+
+      <div class="access-grid">
+
+        <!-- Google Ads -->
+        <div class="access-card">
+          <div class="access-card-header">
+            <div class="platform-initial init-google">G</div>
+            <div>
+              <div class="platform-name">Google Ads</div>
+              <div class="platform-sub">Ad account access, read-only or admin</div>
+            </div>
+          </div>
+          <div class="access-steps">
+            <div class="access-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <span class="step-label">Share your Google Ads Account ID</span>
+                <span class="step-detail">Found in the top right corner of your Google Ads account (format: XXX-XXX-XXXX). Send us the ID and we'll request access from our manager account. You'll receive a notification to accept.</span>
+              </div>
+            </div>
+            <div class="access-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <span class="step-label">Or add us as a direct user</span>
+                <span class="step-detail">In Google Ads, go to Admin, then Access and Security, then Add User. Enter <span class="inline-email">google@avenuez.com</span> with read-only access.</span>
+              </div>
+            </div>
+          </div>
+          <div class="access-note">If your account is managed through an MCC (agency manager account), adding us at the MCC level will grant access across all linked accounts.</div>
+        </div>
+
+        <!-- Meta -->
+        <div class="access-card">
+          <div class="access-card-header">
+            <div class="platform-initial init-meta">M</div>
+            <div>
+              <div class="platform-name">Meta (Facebook and Instagram)</div>
+              <div class="platform-sub">Business Manager partner access</div>
+            </div>
+          </div>
+          <div class="access-steps">
+            <div class="access-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <span class="step-label">Partner with the Avenue Z Business Manager</span>
+                <span class="step-detail">In Meta Business Manager, go to Settings, then Partners, then Add a Partner. Enter our Business Manager ID: <span class="inline-email">667579606919900</span>. Share your Ad Account and Page access.</span>
+              </div>
+            </div>
+            <div class="access-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <span class="step-label">Or invite us as a direct user</span>
+                <span class="step-detail">Add <span class="inline-email">meta@avenuez.com</span> as an admin to your Meta Business Manager directly.</span>
+              </div>
+            </div>
+          </div>
+          <div class="access-note">If you have separate Pixels or ad accounts for Next Health and Lindora, please share both so we can audit the full picture.</div>
+        </div>
+
+        <!-- GA4 -->
+        <div class="access-card">
+          <div class="access-card-header">
+            <div class="platform-initial init-ga">GA</div>
+            <div>
+              <div class="platform-name">Google Analytics (GA4)</div>
+              <div class="platform-sub">Property-level admin access</div>
+            </div>
+          </div>
+          <div class="access-steps">
+            <div class="access-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <span class="step-label">Add us to your GA4 property</span>
+                <span class="step-detail">In Google Analytics, go to Admin, then Property Access Management, then Add User. Enter <span class="inline-email">google@avenuez.com</span> with Administrator access.</span>
+              </div>
+            </div>
+            <div class="access-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <span class="step-label">Confirm which property is linked to your Google Ads account</span>
+                <span class="step-detail">If you have multiple properties (for example, by market or for Lindora vs. Next Health), let us know which to prioritize. We'll review all of them.</span>
+              </div>
+            </div>
+          </div>
+          <div class="access-note">Administrator access lets us connect analytics data to your ad performance and surface conversion insights across the full funnel.</div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">A &nbsp; V &nbsp; E &nbsp; N &nbsp; U &nbsp; E &nbsp; Z</div>
+      <div class="footer-tagline">W E &nbsp; D R I V E &nbsp; I N F L U E N C E</div>
+    </div>
+    <div class="footer-right">
+      Partnership Development, Next Health<br>
+      Confidential · April 2026
+    </div>
+  </footer>
+
+  <script>
+    window.GleanBridge.postMessage({
+      actionId: 'export-pdf',
+      type: 'glean-add-menu',
+      metadata: { label: 'Export as PDF', icon: 'export' }
+    });
+    window.GleanBridge.onMessage('action', function(data) {
+      if (data.actionId === 'export-pdf') window.print();
+    });
+  </script>
+
+</body>
+</html>
